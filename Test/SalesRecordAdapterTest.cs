@@ -20,7 +20,7 @@ namespace Test
         {
             string path = @"TestData.csv";
 
-            List<SalesRecord> result = salesRecordAdapter.GetSalesRecordsFromCsvFile(path, true);
+            List<SalesRecord> result = salesRecordAdapter.GetSalesRecordsFromCsvFile(path);
 
             Assert.Equal(100, result.Count);
         }
@@ -33,7 +33,7 @@ namespace Test
         {
             string path = @"TestData.csv";
 
-            List<SalesRecord> result = salesRecordAdapter.GetSalesRecordsFromCsvFile(path, true);
+            List<SalesRecord> result = salesRecordAdapter.GetSalesRecordsFromCsvFile(path);
 
             Assert.Contains(result, item => ContainsMatchingData(testLine, item));
         }

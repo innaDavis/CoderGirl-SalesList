@@ -12,6 +12,6 @@ namespace CoderGirl_SalesList
         /// <param name="filePath">The path to the csv file</param>
         /// <param name="header">true if the file includes a header line, else false</param>
         /// <returns>List of SalesRecord items</returns>
-        List<SalesRecord> GetSalesRecordsFromCsvFile(string filePath, bool header = false);
+        List<SalesRecord> GetSalesRecordsFromCsvFile(string filePath);
     }
 }
