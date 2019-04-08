@@ -65,7 +65,7 @@ namespace Test
                 new SalesRecord{Country = "Country1"},
                 new SalesRecord{Country = "Country2"},
                 new SalesRecord{Country = "Country3"},
-                new SalesRecord{Country = "country3"},
+                new SalesRecord{Country = "Country3"},
                 new SalesRecord{Country = "Country2"}
             };
 

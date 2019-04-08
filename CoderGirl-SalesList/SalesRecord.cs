@@ -13,7 +13,7 @@ namespace CoderGirl_SalesList
         public string ItemType { get; set; }
         public string SalesChannel { get; set; }
         public string OrderPriority { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate{ get; set; }
         public decimal TotalProfit { get; set; }
         public decimal TotalRevenue { get; set; }
         public DateTime ShipDate { get; set; }

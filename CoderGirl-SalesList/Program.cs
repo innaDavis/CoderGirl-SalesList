@@ -7,7 +7,7 @@ namespace CoderGirl_SalesList
 {
     public class Program
     {
-        private string filePath = @"1000 Sales Records.csv";
+        private string filePath = @"Data/1000 Sales Records.csv";
 
         public static void Main(string[] args)
         {
@@ -18,63 +18,25 @@ namespace CoderGirl_SalesList
 
         private void Run()
         {
-            //List<SalesRecord> salesRecords = GetSalesRecordsFromFileData();
-            //int countNorthAmerica = GetCountForNorthAmerica(salesRecords);
-            //Console.WriteLine(countNorthAmerica);
+            Factory factory = new Factory();
+            ISalesRecordAdapter salesRecordAdapter = factory.SalesRecordAdapter;
+            ISalesRecordAnalyzer salesRecordAnalyzer = factory.SalesRecordAnalyzer;
+
+            List<SalesRecord> salesRecords = salesRecordAdapter.GetSalesRecordsFromCsvFile(filePath);
+
+            List<string> countries = salesRecordAnalyzer.GetCountries(salesRecords);
+            countries.Sort();
+            countries.ForEach(country => Console.WriteLine(country));
+
+            int countryCount = salesRecordAnalyzer.GetCountryCount(salesRecords);
+            Console.WriteLine(countryCount);
+
+            decimal maxProfit = salesRecordAnalyzer.GetMaxProfit(salesRecords);
+            Console.WriteLine(maxProfit);
+
+            Console.ReadLine();
         }
 
-        private int GetCountForNorthAmerica(List<SalesRecord> salesRecords)
-        {
-            int count = 0;
-            foreach(SalesRecord record in salesRecords)
-            {
-                if(record.Region == "North America")
-                {
-                    count++;
-                }
-            }
-            int[] something = new int[5];
-            something.TakeLast(4);
-
-            List<string> stringList = new List<string>();
-            stringList.Select(item => int.Parse(item)).ToList();
-            return count;
-        }
-
-        private List<SalesRecord> GetSalesRecordsFromFileData()
-        {
-            List<SalesRecord> salesRecords = new List<SalesRecord>();
-            bool isFirstRow = true;
-            foreach (string line in File.ReadLines(@"Data/1000 Sales Records.csv"))
-            {
-                if (isFirstRow)
-                {
-                    isFirstRow = false;
-                    continue;
-                }
-
-                SalesRecord salesRecord = CreateSalesRecord(line);
-                salesRecords.Add(salesRecord);
-            }
-            return salesRecords;
-        }
-
-        private SalesRecord CreateSalesRecord(string line)
-        {
-            SalesRecord salesRecord = new SalesRecord();
-            string[] properties = line.Split(",");
-            salesRecord.Region = properties[0];
-            salesRecord.Country = properties[1];
-            salesRecord.ItemType = properties[2];
-            salesRecord.SalesChannel = properties[3];
-            salesRecord.OrderPriority = properties[4];
-            salesRecord.OrderDate = DateTime.Parse(properties[5]);
-            salesRecord.ShipDate = DateTime.Parse(properties[7]);
-            salesRecord.UnitsSold = Int32.Parse(properties[8]);
-            salesRecord.TotalProfit = Decimal.Parse(properties[13]);
-            salesRecord.TotalRevenue = Decimal.Parse(properties[11]);
-
-            return salesRecord;
-        }
+       
     }
 }

@@ -10,8 +10,7 @@ namespace CoderGirl_SalesList
         //get cursor on interface and then ctrl period
         public bool AreOrderDatesBefore(DateTime cutoffDate, List<SalesRecord> salesRecords)
         {
-            decimal[] profits = { 1.3m, 3.44m, 4.9m };
-            bool result = salesRecords.Any(record => profits.Contains(record.TotalProfit));
+            bool result = salesRecords.Any(record => record.OrderDate < cutoffDate);
             return result;
         }
 
