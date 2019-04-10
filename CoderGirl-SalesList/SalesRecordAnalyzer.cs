@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CoderGirl_SalesList
 {
-    internal class WahteverYouWant : ISalesRecordAnalyzer
+    internal class SalesRecordAnalyzer : ISalesRecordAnalyzer
     {
         //get cursor on interface and then ctrl period
         public bool AreOrderDatesBefore(DateTime cutoffDate, List<SalesRecord> salesRecords)

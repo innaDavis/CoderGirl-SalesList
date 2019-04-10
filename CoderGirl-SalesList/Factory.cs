@@ -12,8 +12,8 @@ namespace CoderGirl_SalesList
         public Factory()
         {
             //TODO: Add specific implementation classes
-            this.SalesRecordAnalyzer = new WahteverYouWant();
-            this.SalesRecordAdapter = new Adapter();
+            this.SalesRecordAnalyzer = new SalesRecordAnalyzer();
+            this.SalesRecordAdapter = new SalesRecordAdapter();
         }
     }
 }
